@@ -47,7 +47,7 @@
 							<tfoot>
 								<tr align="right">
 									<td colspan="3">
-										<a href="/" class="btn btn-default btn-xs">
+										<a href="${path}/" class="btn btn-default btn-xs">
 											<span class="glyphicon glyphicon-plus-sign"></span> Employee
 										</a>
 									</td>

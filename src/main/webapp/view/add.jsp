@@ -19,7 +19,7 @@
 						<strong><span class="glyphicon glyphicon-plus-sign"></span> Employee</strong>
 					</div>
 					<div class="panel-body">
-						<form:form method="POST" action="/save" class="form-signin form-horizontal" commandName="employee">
+						<form:form method="POST" action="${path}/save" class="form-signin form-horizontal" commandName="employee">
 							<c:if test="${message ne null}">
 								<div class="alert alert-danger">
 									${message}
@@ -67,7 +67,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-md-12" align="right">
-									<a href="/list" class="btn btn-default btn-xs">
+									<a href="${path}/list" class="btn btn-default btn-xs">
 										<span class="glyphicon glyphicon-list List"></span> Employee List
 									</a>
 									<button type="submit" class="btn btn-default btn-xs">

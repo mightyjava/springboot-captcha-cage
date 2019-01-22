@@ -17,22 +17,29 @@ public class EmployeeController {
 	
 	private String message;
 	
+	private Employee employeeObject;
+	
 	@Autowired
 	private EmployeeService employeeService;
 	
 	@GetMapping("/")
 	public String add(Model model) {
+		if(employeeObject == null) {
+			employeeObject = new Employee();
+		}
 		model.addAttribute("message", message);
-		model.addAttribute("employee", new Employee());
+		model.addAttribute("employee", employeeObject);
 		return "add";
 	}
 	
 	@PostMapping("/save")
 	public String save(@ModelAttribute("employee") Employee employee, HttpServletRequest request) {
+		employeeObject = employee;
 		if(employee.getCaptcha().equals(request.getSession().getAttribute("captcha"))) {
-			employeeService.add(employee);
+			employeeService.add(employeeObject);
 			return "redirect:/list";
 		} else {
+			employeeObject.setCaptcha(null);
 			message = "Please verify captcha";
 			return "redirect:/";
 		}
@@ -41,6 +48,7 @@ public class EmployeeController {
 	@GetMapping("/list")
 	public String list(Model model) {
 		message = null;
+		employeeObject = null;
 		model.addAttribute("employees", employeeService.employees());
 		return "list";
 	}

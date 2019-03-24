@@ -9,12 +9,13 @@
 	<title>Employee</title>
 	<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<link rel="stylesheet" href="${path}/webjars/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${path}/webjars/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<strong><span class="glyphicon glyphicon-plus-sign"></span> Employee</strong>
 					</div>
@@ -57,20 +58,31 @@
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<img alt="captcha" src="${path}/captcha-servlet">
+									<div class="input-group input-group-md">
+										<img class="form-control" style="padding:0px;height:80px;" alt="captcha" src="${path}/captcha-servlet">
+										<span class="input-group-addon">
+											<a href="javascript:refreshCaptcha();"><i class="fa fa-refresh"></i></a>
+										</span>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<form:input class="form-control" path="captcha" placeholder="Enter Captcha" required="true"/>
+									<div class="input-group input-group-md">
+										<span class="input-group-addon">
+											<i class="fa fa-key"></i>
+										</span>
+										<form:input class="form-control" path="captcha" placeholder="Enter Captcha" required="true"/>
+									</div>
 								</div>
 							</div>
+							<hr/>
 							<div class="form-group">
 								<div class="col-md-12" align="right">
-									<a href="${path}/list" class="btn btn-default btn-xs">
+									<a href="${path}/list" class="btn btn-primary btn-xs">
 										<span class="glyphicon glyphicon-list List"></span> Employee List
 									</a>
-									<button type="submit" class="btn btn-default btn-xs">
+									<button type="submit" class="btn btn-success btn-xs">
 										<span class="glyphicon glyphicon-floppy-disk"></span> Save
 									</button>
 								</div>
@@ -81,5 +93,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="${path}/webjars/jquery/3.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="${path}/js/jquery.event.js"></script>
 </body>
 </html>

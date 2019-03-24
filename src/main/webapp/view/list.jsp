@@ -13,47 +13,48 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<strong><span class="glyphicon glyphicon-list List"></span> Employee List</strong>
 					</div>
 					<div class="panel-body">
-						<table class="table table-bordered table-condensed table-hover table-striped">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Date Of Birth</th>
-									<th>Salary</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:choose>
-									<c:when test="${employees.size() > 0}">
-										<c:forEach items="${employees}" var="employee">
+						<div class="form-group">
+							<table class="table table-striped table-hover">
+	  							<thead>
+									<tr>
+										<th>Name</th>
+										<th>Date Of Birth</th>
+										<th>Salary</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:choose>
+										<c:when test="${employees.size() > 0}">
+											<c:forEach items="${employees}" var="employee">
+												<tr>
+													<td>${employee.name}</td>
+													<td>${employee.dateOfBirth}</td>
+													<td>${employee.salary}</td>
+												</tr>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
 											<tr>
-												<td>${employee.name}</td>
-												<td>${employee.dateOfBirth}</td>
-												<td>${employee.salary}</td>
+												<td colspan="3" align="center">No Employee Available.</td>
 											</tr>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<td colspan="3">No Employee Available.</td>
-										</tr>
-									</c:otherwise>
-								</c:choose>
-							</tbody>
-							<tfoot>
-								<tr align="right">
-									<td colspan="3">
-										<a href="${path}/" class="btn btn-default btn-xs">
-											<span class="glyphicon glyphicon-plus-sign"></span> Employee
-										</a>
-									</td>
-								</tr>
-							</tfoot>
-						</table>
+										</c:otherwise>
+									</c:choose>
+								</tbody>
+							</table>
+						</div>
+						<hr/>
+						<div class="form-group">
+							<div class="col-md-12" align="right" style="padding:0px;">
+								<a href="${path}/" class="btn btn-success btn-xs">
+									<span class="glyphicon glyphicon-plus-sign"></span> Employee
+								</a>
+							</div>	
+						</div>		
 					</div>
 				</div>
 			</div>
